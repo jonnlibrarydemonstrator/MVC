@@ -34,19 +34,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.DataHolder> {
     @Override
     public void onBindViewHolder(@NonNull DataHolder holder, final int position) {
         holder.DataBind(database.get(position));
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (delete != null)
-                    delete.onClick(view, database.get(position));
-            }
+        holder.delete.setOnClickListener(view -> {
+            if (delete != null)
+                delete.onClick(view, database.get(position));
         });
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (edit != null)
-                    edit.onClick(view, database.get(position));
-            }
+        holder.edit.setOnClickListener(view -> {
+            if (edit != null)
+                edit.onClick(view, database.get(position));
         });
     }
 

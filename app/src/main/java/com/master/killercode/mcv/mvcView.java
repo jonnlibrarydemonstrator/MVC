@@ -55,12 +55,9 @@ public class mvcView extends AppCompatActivity {
         list.setAdapter(adapter);
 
         //Create Refresh
-        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                showLoad();
-                searchMovies();
-            }
+        refresh.setOnRefreshListener(() -> {
+            showLoad();
+            searchMovies();
         });
         searchMovies();
     }
@@ -72,23 +69,17 @@ public class mvcView extends AppCompatActivity {
     private void setDataInList(ArrayList<BestMovieModel> list) {
         if (list.size() > 0) {
             adapter.addDataBase(list);
-            adapter.setDeleteOnClickListener(new ListAdapter.OnDeleteListener() {
-                @Override
-                public void onClick(View view, BestMovieModel bestMovieModel) {
-                    showLoad();
-                    if (controller.deleteMovie(bestMovieModel.getId())) {
-                        searchMovies();
-                    } else {
-                        Toast.makeText(getBaseContext(), "Erro ao deletar", Toast.LENGTH_LONG).show();
-                        hideLoad();
-                    }
+            adapter.setDeleteOnClickListener((view, bestMovieModel) -> {
+                showLoad();
+                if (controller.deleteMovie(bestMovieModel.getId())) {
+                    searchMovies();
+                } else {
+                    Toast.makeText(getBaseContext(), "Erro ao deletar", Toast.LENGTH_LONG).show();
+                    hideLoad();
                 }
             });
-            adapter.setEditOnClickListener(new ListAdapter.OnEditListener() {
-                @Override
-                public void onClick(View view, BestMovieModel bestMovieModel) {
+            adapter.setEditOnClickListener((view, bestMovieModel) -> {
 
-                }
             });
             showList();
         } else {
