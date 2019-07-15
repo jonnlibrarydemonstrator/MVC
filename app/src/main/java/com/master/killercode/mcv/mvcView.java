@@ -22,6 +22,10 @@ import butterknife.ButterKnife;
 @SuppressLint("Registered")
 public class mvcView extends AppCompatActivity {
 
+    /**
+     * FindViews with ButterKnife
+     */
+
     @BindView(R.id.refresh)
      SwipeRefreshLayout refresh;
 
@@ -34,6 +38,9 @@ public class mvcView extends AppCompatActivity {
     private ListAdapter adapter;
     private mvcController controller;
 
+    /**
+     * LifeCicle create
+     */
     @Override
     public void onCreate(final Bundle bundle) {
         super.onCreate(bundle);
@@ -42,9 +49,11 @@ public class mvcView extends AppCompatActivity {
 
         controller = new mvcController(this);
         initActions();
-
     }
 
+    /**
+     * init create view
+     */
     private void initActions() {
         showLoad();
         showMsg("Carregando...");
@@ -62,10 +71,17 @@ public class mvcView extends AppCompatActivity {
         searchMovies();
     }
 
+    /**
+     * call list
+     */
     private void searchMovies() {
         setDataInList(controller.getAllMovieList());
     }
 
+    /**
+     * verify and setup view
+     * @param list list with movies
+     */
     private void setDataInList(ArrayList<BestMovieModel> list) {
         if (list.size() > 0) {
             adapter.addDataBase(list);
@@ -87,6 +103,10 @@ public class mvcView extends AppCompatActivity {
         }
         hideLoad();
     }
+
+    /**
+     * View config utils
+     */
 
     private void showLoad() {
         if (refresh != null)

@@ -21,7 +21,14 @@ import butterknife.ButterKnife;
 @SuppressWarnings("unused")
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.DataHolder> {
 
+    /**
+     * create array empty
+     */
     private final ArrayList<BestMovieModel> database = new ArrayList<>();
+
+    /**
+     * Recycler view adapter default methods
+     */
 
     @NonNull
     @Override
@@ -52,7 +59,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.DataHolder> {
     /**
      * Adapter Set
      */
-
     public void addDataBase(ArrayList<BestMovieModel> list) {
             database.clear();
             database.addAll(list);
@@ -118,6 +124,4 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.DataHolder> {
     public void setEditOnClickListener(OnEditListener edit) {
         this.edit = edit;
     }
-
-
 }
