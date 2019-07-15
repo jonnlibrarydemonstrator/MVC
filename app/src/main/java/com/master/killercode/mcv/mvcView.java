@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.master.killercode.mcv.adapter.ListAdapter;
 import com.quanticheart.lib.dao.model.BestMovieModel;
 
@@ -27,13 +28,16 @@ public class mvcView extends AppCompatActivity {
      */
 
     @BindView(R.id.refresh)
-     SwipeRefreshLayout refresh;
+    SwipeRefreshLayout refresh;
 
     @BindView(R.id.list_item)
-     RecyclerView list;
+    RecyclerView list;
 
     @BindView(R.id.textMsg)
-     TextView textMsg;
+    TextView textMsg;
+
+    @BindView(R.id.btnAdd)
+    FloatingActionButton btnAdd;
 
     private ListAdapter adapter;
     private mvcController controller;
@@ -69,6 +73,11 @@ public class mvcView extends AppCompatActivity {
             searchMovies();
         });
         searchMovies();
+
+        //Btn Add
+        btnAdd.setOnClickListener(view -> {
+
+        });
     }
 
     /**
@@ -80,6 +89,7 @@ public class mvcView extends AppCompatActivity {
 
     /**
      * verify and setup view
+     *
      * @param list list with movies
      */
     private void setDataInList(ArrayList<BestMovieModel> list) {
