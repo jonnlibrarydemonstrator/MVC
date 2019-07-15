@@ -55,4 +55,21 @@ final class mvcModel {
     ArrayList<BestMovieModel> loadAllMovies() {
         return dbUtil.getListMovies();
     }
+
+    /**
+     * get fake movie list
+     * @return fake list
+     */
+    ArrayList<BestMovieModel> loadFakeMovies() {
+        return dbUtil.createInitList(DatabaseMovie.LONG_LIST);
+    }
+
+    /**
+     * clean database
+     * @return if success deleted
+     */
+    Boolean clearDatabase(){
+        return dbUtil.cleanTable();
+    }
+
 }
