@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 
 import com.master.killercode.mcv.R;
+import com.master.killercode.mcv.util.MsgUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,10 +34,13 @@ public class DialogNewMovie {
         ButterKnife.bind(this, v);
 
         btnAdd.setOnClickListener(view -> {
-            callback.onClick();
-            dialog.dismiss();
+            String title = etTitle.getText().toString().trim();
+            String desc = etDesc.getText().toString().trim();
+            if (verifyString(activity, title, desc)) {
+                callback.onClick(title, desc, ratingBar.getRating());
+                dialog.dismiss();
+            }
         });
-
     }
 
     /**
@@ -44,6 +48,15 @@ public class DialogNewMovie {
      */
 
     public interface OnAddClickListener {
-        void onClick();
+        void onClick(String title, String desc, float rating);
+    }
+
+    private boolean verifyString(Activity activity, String title, String desc) {
+        if (!title.isEmpty() && !desc.isEmpty()) {
+            return true;
+        } else {
+            MsgUtil.msg(activity, "Preencha todos os campos");
+            return false;
+        }
     }
 }

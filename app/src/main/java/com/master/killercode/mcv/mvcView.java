@@ -14,6 +14,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.master.killercode.mcv.adapter.ListAdapter;
 import com.master.killercode.mcv.dialog.DialogNewMovie;
+import com.master.killercode.mcv.util.MsgUtil;
 import com.quanticheart.lib.dao.model.BestMovieModel;
 
 import java.util.ArrayList;
@@ -76,7 +77,7 @@ public class mvcView extends AppCompatActivity {
         searchMovies();
 
         //Btn Add
-        btnAdd.setOnClickListener(view -> new DialogNewMovie(this, () -> {
+        btnAdd.setOnClickListener(view -> new DialogNewMovie(this, (String title, String desc, float rating) -> {
 
         }));
     }
@@ -101,7 +102,7 @@ public class mvcView extends AppCompatActivity {
                 if (controller.deleteMovie(bestMovieModel.getId())) {
                     searchMovies();
                 } else {
-                    Toast.makeText(getBaseContext(), "Erro ao deletar", Toast.LENGTH_LONG).show();
+                    MsgUtil.msg(this, "Erro ao deletar");
                     hideLoad();
                 }
             });

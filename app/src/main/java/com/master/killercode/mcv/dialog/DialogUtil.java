@@ -7,6 +7,7 @@ import android.view.View;
 
 class DialogUtil {
 
+    @SuppressWarnings("SameParameterValue")
     static View createView(Activity activity, int layout) {
         return LayoutInflater.from(activity).inflate(layout, null, false);
     }
