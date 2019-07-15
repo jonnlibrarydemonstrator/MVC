@@ -17,10 +17,6 @@ public class ToolbarUtil {
         ActionBar bar = a.getSupportActionBar();
         assert bar != null;
         bar.setTitle(activity.getResources().getString(R.string.app_name));
-        bar.setDisplayHomeAsUpEnabled(true);
-
-        toolbar.setNavigationIcon(activity.getResources().getDrawable(R.drawable.ic_arrow_back, null));
-        toolbar.setNavigationOnClickListener(view -> activity.onBackPressed());
     }
 
 }

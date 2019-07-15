@@ -8,5 +8,7 @@
     <string name="label_movie_description">Movie Description</string>
     <string name="label_rating_movie">Rating movie</string>
     <string name="label_insert_in_base">Insert in base</string>
+    <string name="menu_create_list">Create List</string>
+    <string name="menu_clean_database">Clean Database</string>
 
 </resources>
