@@ -50,6 +50,13 @@ class mvcController {
     }
 
     /**
+     * Clear database in app
+     */
+    Boolean clear() {
+        return model.clearDatabase();
+    }
+
+    /**
      * delete movie in data base
      *
      * @param id for delete in base
@@ -73,4 +80,20 @@ class mvcController {
             return new ArrayList<>();
         }
     }
+
+    /**
+     * get fake movies
+     *
+     * @return list fake movies
+     */
+    ArrayList<BestMovieModel> getFakeMovieList() {
+        ArrayList<BestMovieModel> list = model.loadFakeMovies();
+        if (list != null) {
+            Log.w("List Movies", list.toString());
+            return list;
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
 }
