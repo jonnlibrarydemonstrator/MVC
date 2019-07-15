@@ -17,6 +17,7 @@ final class mvcModel {
 
     /**
      * constructor
+     *
      * @param context for access database class
      */
     mvcModel(Context context) {
@@ -25,31 +26,35 @@ final class mvcModel {
 
     /**
      * add new movie data
+     *
      * @param data model with data for insert
      */
-    void addMovieInDB(BestMovieModel data) {
-        dbUtil.addMovie(data);
+    boolean addMovieInDB(BestMovieModel data) {
+        return dbUtil.addMovie(data);
     }
 
     /**
      * edit movie data
+     *
      * @param data model with data for edit
      */
-    void editMovieInDB(BestMovieModel data) {
-        dbUtil.editMovie(data);
+    boolean editMovieInDB(BestMovieModel data) {
+        return dbUtil.editMovie(data);
     }
 
     /**
      * delete movie
+     *
      * @param idMovie for search in database
      * @return if success deleted
      */
-    Boolean deleteMovieInDB(final String idMovie) {
+    boolean deleteMovieInDB(final String idMovie) {
         return dbUtil.deleteMovie(idMovie);
     }
 
     /**
      * get all movies list
+     *
      * @return list
      */
     ArrayList<BestMovieModel> loadAllMovies() {
@@ -58,17 +63,25 @@ final class mvcModel {
 
     /**
      * get fake movie list
+     *
      * @return fake list
      */
     ArrayList<BestMovieModel> loadFakeMovies() {
-        return dbUtil.createInitList(DatabaseMovie.LONG_LIST);
+        ArrayList<BestMovieModel> list = dbUtil.createInitList(DatabaseMovie.LONG_LIST);
+
+        for (int i = 0; i < list.size(); i++) {
+            dbUtil.addMovie(list.get(i));
+        }
+
+        return dbUtil.getListMovies();
     }
 
     /**
      * clean database
+     *
      * @return if success deleted
      */
-    Boolean clearDatabase(){
+    Boolean clearDatabase() {
         return dbUtil.cleanTable();
     }
 

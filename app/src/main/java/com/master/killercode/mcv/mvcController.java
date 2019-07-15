@@ -31,9 +31,9 @@ class mvcController {
      * @param description little description
      * @param rating      rating movie
      */
-    void addMovie(String title, String description, Float rating) {
+    boolean addMovie(String title, String description, Float rating) {
         BestMovieModel data = new BestMovieModel(title, description, rating);
-        model.addMovieInDB(data);
+        return model.addMovieInDB(data);
     }
 
     /**
@@ -44,9 +44,9 @@ class mvcController {
      * @param description little description
      * @param rating      rating movie
      */
-    void editMovie(String id, String title, String description, Float rating) {
+    boolean editMovie(String id, String title, String description, Float rating) {
         BestMovieModel data = new BestMovieModel(title, description, rating);
-        model.editMovieInDB(data);
+        return model.editMovieInDB(data);
     }
 
     /**

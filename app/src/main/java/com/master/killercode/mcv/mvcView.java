@@ -86,8 +86,15 @@ public class mvcView extends AppCompatActivity {
         searchMovies();
 
         //Btn Add
-        btnAdd.setOnClickListener(view -> new DialogNewMovie(this, (String title, String desc, float rating) ->
-                controller.addMovie(title, desc, rating)));
+        btnAdd.setOnClickListener(view -> new DialogNewMovie(this, (title, desc, rating) -> {
+            showLoad();
+            if (controller.addMovie(title, desc, rating)) {
+                searchMovies();
+            } else {
+                MsgUtil.msg(this, "Erro ao inserir");
+                hideLoad();
+            }
+        }));
     }
 
     /**
@@ -119,7 +126,7 @@ public class mvcView extends AppCompatActivity {
             });
             showList();
         } else {
-            showMsg("Nada Adicionado");
+            clearLayout();
         }
         hideLoad();
     }
@@ -156,6 +163,10 @@ public class mvcView extends AppCompatActivity {
             list.setVisibility(View.GONE);
     }
 
+    private void clearLayout() {
+        showMsg("Nada Adicionado");
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -164,6 +175,23 @@ public class mvcView extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menuCreate:
+                showLoad();
+                setDataInList(controller.getFakeMovieList());
+                break;
+            case R.id.menuClean:
+                showLoad();
+                if (controller.clear()) {
+                    clearLayout();
+                    hideLoad();
+                } else {
+                    MsgUtil.msg(this, "Erro ao limpar base");
+                }
+                break;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }
