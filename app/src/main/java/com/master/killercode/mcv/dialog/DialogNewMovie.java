@@ -15,6 +15,9 @@ import butterknife.ButterKnife;
 
 public class DialogNewMovie {
 
+    /**
+     * Butterknife BindView
+     */
     @BindView(R.id.editTitle)
     EditText etTitle;
 
@@ -27,6 +30,12 @@ public class DialogNewMovie {
     @BindView(R.id.btnAdd)
     Button btnAdd;
 
+    /**
+     * Dialog constructor
+     *
+     * @param activity for create dialog and inflate view
+     * @param callback for result in dialog
+     */
     public DialogNewMovie(Activity activity, OnAddClickListener callback) {
 
         View v = DialogUtil.createView(activity, R.layout.dialog);
@@ -51,6 +60,14 @@ public class DialogNewMovie {
         void onClick(String title, String desc, float rating);
     }
 
+    /**
+     * for verify string
+     *
+     * @param activity for show msg
+     * @param title    string for verify
+     * @param desc     string for verify
+     * @return is text not empty
+     */
     private boolean verifyString(Activity activity, String title, String desc) {
         if (!title.isEmpty() && !desc.isEmpty()) {
             return true;
