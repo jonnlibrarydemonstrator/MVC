@@ -1,42 +1,39 @@
 package com.master.killercode.mcv;
 
-import android.content.ContentValues;
 import android.content.Context;
-import com.master.killercode.mcv.Helper.SQLiteHelper;
+
+import com.quanticheart.lib.dao.model.BestMovieModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
+@SuppressWarnings("unused")
 public class mvcController {
-    private mvcModel model;
-    private List<String> jobList;
+    private final mvcModel model;
 
     mvcController(Context context) {
-        jobList = new ArrayList<>();
         model = new mvcModel(context);
     }
 
-    public void addJob(final String title) {
-        final ContentValues data = new ContentValues();
-        data.put(SQLiteHelper.COLLUM, title);
-        model.addJob(data);
+    public void addMovie(String title, String description, Float rating) {
+        BestMovieModel data = new BestMovieModel(title, description, rating);
+        model.addMovieInDB(data);
     }
 
-    public void deleteJob(final String title) {
-        model.deleteJob(title);
+    public void editMovie(String id, String title, String description, Float rating) {
+        BestMovieModel data = new BestMovieModel(title, description, rating);
+        model.editMovieInDB(data);
     }
 
-//    public void deleteJob(final long id) {
-//        model.deleteJob("id='" + id + "'");
-//    }
-//
-//    public void deleteAllJob() {
-//        model.deleteJob(null);
-//    }
+    Boolean deleteMovie(final String id) {
+        return model.deleteMovieInDB(id);
+    }
 
-    public List<String> getJobsList() {
-        jobList.clear();
-        jobList = model.loadAllJobs();
-        return jobList;
+    ArrayList<BestMovieModel> getAllMovieList() {
+        ArrayList<BestMovieModel> list = model.loadAllMovies();
+        if (list != null) {
+            return list;
+        } else {
+            return new ArrayList<>();
+        }
     }
 }

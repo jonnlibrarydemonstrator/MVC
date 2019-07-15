@@ -1,31 +1,34 @@
 package com.master.killercode.mcv;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.util.Log;
 
-import com.master.killercode.mcv.Helper.DataBaseUtil;
-import com.master.killercode.mcv.Helper.SQLiteHelper;
+import com.quanticheart.lib.dao.DatabaseMovie;
+import com.quanticheart.lib.dao.model.BestMovieModel;
 
-import java.util.List;
+import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 final class mvcModel {
 
-    private DataBaseUtil dbUtil;
+    private final DatabaseMovie dbUtil;
 
     mvcModel(Context context) {
-        dbUtil = new DataBaseUtil(context);
+        dbUtil = new DatabaseMovie(context);
     }
 
-    public void addJob(ContentValues data) {
-        dbUtil.addJob(SQLiteHelper.TABLE_NAME, data);
+    void addMovieInDB(BestMovieModel data) {
+        dbUtil.addMovie(data);
     }
 
-    public void deleteJob(final String field_params) {
-       dbUtil.deleteJob(SQLiteHelper.TABLE_NAME, field_params);
+    void editMovieInDB(BestMovieModel data) {
+        dbUtil.editMovie(data);
     }
 
-    public List<String> loadAllJobs() {
-        return dbUtil.getList();
+    Boolean deleteMovieInDB(final String idMovie) {
+        return dbUtil.deleteMovie(idMovie);
+    }
+
+    ArrayList<BestMovieModel> loadAllMovies() {
+        return dbUtil.getListMovies();
     }
 }

@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">MVC(Model-View-Controller)</string>
-    <string name="action_settings">Settings</string>
-    <string name="add_button_name">New Job</string>
+    <string name="desc_button_edit">edit move</string>
+    <string name="desc_button_delete">delete movie</string>
 
 </resources>

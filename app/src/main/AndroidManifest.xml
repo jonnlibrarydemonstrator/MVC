@@ -13,7 +13,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".Splash.Splash"
+            android:name=".splash.Splash"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

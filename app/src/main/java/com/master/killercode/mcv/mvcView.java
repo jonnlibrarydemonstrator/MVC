@@ -2,88 +2,127 @@ package com.master.killercode.mcv;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.master.killercode.mcv.adapter.ListAdapter;
+import com.quanticheart.lib.dao.model.BestMovieModel;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 @SuppressLint("Registered")
 public class mvcView extends AppCompatActivity {
-    public static final String APP_TAG = "John.mvc";
 
-    private ListView lvJob;
-    private EditText etnewJob;
-    private Button btnAddJob;
+    @BindView(R.id.refresh)
+     SwipeRefreshLayout refresh;
 
+    @BindView(R.id.list_item)
+     RecyclerView list;
+
+    @BindView(R.id.textMsg)
+     TextView textMsg;
+
+    private ListAdapter adapter;
     private mvcController controller;
 
     @Override
     public void onCreate(final Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.main);
+        ButterKnife.bind(this);
 
-        initVars();
+        controller = new mvcController(this);
         initActions();
 
     }
 
-    private void initVars() {
-        controller = new mvcController(this);
-
-        lvJob = findViewById(R.id.lvJob);
-        btnAddJob = findViewById(R.id.btnAddJob);
-        etnewJob = findViewById(R.id.etnewJob);
-    }
-
     private void initActions() {
-        btnAddJob.setOnClickListener(eventClickForNewJob);
-        searshJobs();
-    }
+        showLoad();
+        showMsg("Carregando...");
 
-    private void searshJobs() {
-        final List<String> jobsList = controller.getJobsList();
+        //Create Recycler
+        list.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        adapter = new ListAdapter();
+        list.setAdapter(adapter);
 
-        Log.w(mvcView.APP_TAG, String.format("%d Jobs Found ", jobsList.size()));
-
-        this.lvJob.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, jobsList.toArray(new String[]{})));
-
-        this.lvJob.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //Create Refresh
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id) {
-                Log.d(mvcView.APP_TAG, String.format("Job id: %d at position: %d ", id, position));
-
-                final TextView v = (TextView) view;
-
-                controller.deleteJob(v.getText().toString().trim());
-                searshJobs();
+            public void onRefresh() {
+                showLoad();
+                searchMovies();
             }
         });
+        searchMovies();
     }
 
-    private final View.OnClickListener eventClickForNewJob = new View.OnClickListener() {
-        @Override
-        public void onClick(final View view) {
-            Log.w(APP_TAG, "btn new job Added");
+    private void searchMovies() {
+        setDataInList(controller.getAllMovieList());
+    }
 
-            controller.addJob(etnewJob.getText().toString().trim());
-            searshJobs();
+    private void setDataInList(ArrayList<BestMovieModel> list) {
+        if (list.size() > 0) {
+            adapter.addDataBase(list);
+            adapter.setDeleteOnClickListener(new ListAdapter.OnDeleteListener() {
+                @Override
+                public void onClick(View view, BestMovieModel bestMovieModel) {
+                    showLoad();
+                    if (controller.deleteMovie(bestMovieModel.getId())) {
+                        searchMovies();
+                    } else {
+                        Toast.makeText(getBaseContext(), "Erro ao deletar", Toast.LENGTH_LONG).show();
+                        hideLoad();
+                    }
+                }
+            });
+            adapter.setEditOnClickListener(new ListAdapter.OnEditListener() {
+                @Override
+                public void onClick(View view, BestMovieModel bestMovieModel) {
+
+                }
+            });
+            showList();
+        } else {
+            showMsg("Nada Adicionado");
         }
-    };
-
-    @Override
-    protected void onStart() {
-        super.onStart();
+        hideLoad();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
+    private void showLoad() {
+        if (refresh != null)
+            refresh.setRefreshing(true);
     }
+
+    private void hideLoad() {
+        if (refresh != null)
+            refresh.setRefreshing(false);
+    }
+
+    private void showList() {
+        if (list != null)
+            list.setVisibility(View.VISIBLE);
+
+        if (textMsg != null)
+            textMsg.setVisibility(View.GONE);
+    }
+
+    private void showMsg(String msg) {
+        if (textMsg != null) {
+            textMsg.setText(msg);
+            textMsg.setVisibility(View.VISIBLE);
+        }
+
+        if (list != null)
+            list.setVisibility(View.GONE);
+    }
+
 }

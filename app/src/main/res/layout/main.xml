@@ -1,37 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/widget31"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Tools="http://schemas.android.com/tools"
+    android:id="@+id/refresh"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/row"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnAddJob"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_button_name" />
-
-        <EditText
-            android:id="@+id/etnewJob"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_item"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:text=""
-            android:textSize="18sp"
-            tools:ignore="LabelFor" />
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textMsg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            Tools:text="Nada" />
 
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/lvJob"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/row" />
-
-</RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

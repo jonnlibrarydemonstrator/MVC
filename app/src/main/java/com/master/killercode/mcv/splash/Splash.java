@@ -1,8 +1,9 @@
-package com.master.killercode.mcv.Splash;
+package com.master.killercode.mcv.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.master.killercode.mcv.R;
 import com.master.killercode.mcv.mvcView;
