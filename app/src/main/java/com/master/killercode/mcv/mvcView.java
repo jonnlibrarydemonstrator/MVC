@@ -13,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.master.killercode.mcv.adapter.ListAdapter;
+import com.master.killercode.mcv.dialog.DialogNewMovie;
 import com.quanticheart.lib.dao.model.BestMovieModel;
 
 import java.util.ArrayList;
@@ -75,9 +76,9 @@ public class mvcView extends AppCompatActivity {
         searchMovies();
 
         //Btn Add
-        btnAdd.setOnClickListener(view -> {
+        btnAdd.setOnClickListener(view -> new DialogNewMovie(this, () -> {
 
-        });
+        }));
     }
 
     /**

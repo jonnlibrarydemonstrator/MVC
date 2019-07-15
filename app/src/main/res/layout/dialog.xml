@@ -24,7 +24,7 @@
         android:inputType="text|textMultiLine"
         android:lines="4"
         android:longClickable="false"
-        android:maxLength="200"
+        android:maxLength="80"
         android:maxLines="4"
         android:scrollbars="none"
         tools:ignore="Autofill" />
