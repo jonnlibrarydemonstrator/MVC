@@ -58,26 +58,24 @@
             android:id="@+id/editButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/desc_button_edit"
             android:src="@drawable/ic_edit"
-            app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
-            app:layout_constraintStart_toEndOf="@+id/ratingBar"
-            app:layout_constraintTop_toTopOf="@+id/ratingBar"
-            app:layout_constraintVertical_bias="0.481" />
+            app:layout_constraintBottom_toBottomOf="@+id/deleteButton"
+            app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+            app:layout_constraintTop_toTopOf="@+id/deleteButton" />
 
         <ImageButton
             android:id="@+id/deleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:contentDescription="@string/desc_button_delete"
             android:src="@drawable/ic_delete"
-            app:layout_constraintBottom_toBottomOf="@+id/editButton"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editButton"
-            app:layout_constraintTop_toTopOf="@+id/editButton" />
+            app:layout_constraintTop_toBottomOf="@+id/desc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -76,9 +76,8 @@ public class mvcView extends AppCompatActivity {
         searchMovies();
 
         //Btn Add
-        btnAdd.setOnClickListener(view -> new DialogNewMovie(this, (String title, String desc, float rating) -> {
-
-        }));
+        btnAdd.setOnClickListener(view -> new DialogNewMovie(this, (String title, String desc, float rating) ->
+                controller.addMovie(title, desc, rating)));
     }
 
     /**

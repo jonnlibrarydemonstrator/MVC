@@ -33,9 +33,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.DataHolder> {
     @NonNull
     @Override
     public DataHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_list, parent, false);
-        ButterKnife.bind(this, v);
-        return new DataHolder(v);
+        return new DataHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_list, parent, false));
     }
 
     @Override
@@ -87,6 +85,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.DataHolder> {
 
         DataHolder(@NonNull View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         void DataBind(BestMovieModel model) {

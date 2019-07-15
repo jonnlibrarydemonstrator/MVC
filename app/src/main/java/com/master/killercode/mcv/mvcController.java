@@ -1,13 +1,14 @@
 package com.master.killercode.mcv;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.quanticheart.lib.dao.model.BestMovieModel;
 
 import java.util.ArrayList;
 
 @SuppressWarnings("unused")
-public class mvcController {
+class mvcController {
 
     /**
      * Var model for create in constructor
@@ -30,7 +31,7 @@ public class mvcController {
      * @param description little description
      * @param rating      rating movie
      */
-    public void addMovie(String title, String description, Float rating) {
+    void addMovie(String title, String description, Float rating) {
         BestMovieModel data = new BestMovieModel(title, description, rating);
         model.addMovieInDB(data);
     }
@@ -43,7 +44,7 @@ public class mvcController {
      * @param description little description
      * @param rating      rating movie
      */
-    public void editMovie(String id, String title, String description, Float rating) {
+    void editMovie(String id, String title, String description, Float rating) {
         BestMovieModel data = new BestMovieModel(title, description, rating);
         model.editMovieInDB(data);
     }
@@ -66,6 +67,7 @@ public class mvcController {
     ArrayList<BestMovieModel> getAllMovieList() {
         ArrayList<BestMovieModel> list = model.loadAllMovies();
         if (list != null) {
+            Log.w("List Movies", list.toString());
             return list;
         } else {
             return new ArrayList<>();
