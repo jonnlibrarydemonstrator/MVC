@@ -4,5 +4,6 @@
     <string name="app_name">MVC(Model-View-Controller)</string>
     <string name="desc_button_edit">edit move</string>
     <string name="desc_button_delete">delete movie</string>
+    <string name="label_movie_title">Movie Title</string>
 
 </resources>
