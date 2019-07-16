@@ -1,7 +1,6 @@
 package com.master.killercode.mcv.ui.details;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
