@@ -6,7 +6,7 @@
     <string name="desc_button_edit">電影編輯</string>
     <string name="desc_button_delete">電影刪除</string>
 
-    <string name="label_edit">編輯％s</string>
+    <string name="label_edit">編輯%s</string>
     <string name="label_movie_title">電影標題</string>
     <string name="label_movie_description">電影說明</string>
     <string name="label_rating_movie">電影評級</string>
