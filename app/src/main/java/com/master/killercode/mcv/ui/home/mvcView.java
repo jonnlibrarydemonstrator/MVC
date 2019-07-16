@@ -18,6 +18,7 @@ import com.master.killercode.mcv.R;
 import com.master.killercode.mcv.adapter.ListAdapter;
 import com.master.killercode.mcv.base.BaseActivity;
 import com.master.killercode.mcv.dialog.DialogNewMovie;
+import com.master.killercode.mcv.project.ProjectActivity;
 import com.master.killercode.mcv.util.MsgUtil;
 import com.quanticheart.lib.dao.model.BestMovieModel;
 
@@ -57,7 +58,7 @@ public class mvcView extends BaseActivity {
     @Override
     public void onCreate(final Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.main);
+        setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
 
         controller = new mvcController(this);
@@ -76,7 +77,36 @@ public class mvcView extends BaseActivity {
 
         //Create Recycler
         list.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        adapter = new ListAdapter();
+        adapter = new ListAdapter(new ListAdapter.OnAdapterClickListener() {
+            @Override
+            public void onDeleteClick(View view, BestMovieModel bestMovieModel) {
+                showLoad();
+                if (controller.deleteMovie(bestMovieModel.getId())) {
+                    searchMovies();
+                } else {
+                    MsgUtil.msg(mvcView.this, "Erro ao deletar");
+                    hideLoad();
+                }
+            }
+
+            @Override
+            public void onEditClick(View view, BestMovieModel bestMovieModel) {
+                new DialogNewMovie(mvcView.this, bestMovieModel, (id, title, desc, rating) -> {
+                    showLoad();
+                    if (controller.editMovie(id, title, desc, rating)) {
+                        searchMovies();
+                    } else {
+                        MsgUtil.msg(mvcView.this, "Erro ao editar");
+                        hideLoad();
+                    }
+                });
+            }
+
+            @Override
+            public void onItemSelectedClick(View view, BestMovieModel bestMovieModel) {
+                ProjectActivity.openDetails(mvcView.this, bestMovieModel);
+            }
+        });
         list.setAdapter(adapter);
 
         //Create Refresh
@@ -113,24 +143,6 @@ public class mvcView extends BaseActivity {
     private void setDataInList(ArrayList<BestMovieModel> list) {
         if (list.size() > 0) {
             adapter.addDataBase(list);
-            adapter.setDeleteOnClickListener((view, bestMovieModel) -> {
-                showLoad();
-                if (controller.deleteMovie(bestMovieModel.getId())) {
-                    searchMovies();
-                } else {
-                    MsgUtil.msg(this, "Erro ao deletar");
-                    hideLoad();
-                }
-            });
-            adapter.setEditOnClickListener((view, bestMovieModel) -> new DialogNewMovie(this, bestMovieModel, (id, title, desc, rating) -> {
-                showLoad();
-                if (controller.editMovie(id, title, desc, rating)) {
-                    searchMovies();
-                } else {
-                    MsgUtil.msg(this, "Erro ao editar");
-                    hideLoad();
-                }
-            }));
             showList();
         } else {
             clearLayout();

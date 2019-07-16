@@ -22,6 +22,14 @@ import butterknife.ButterKnife;
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.DataHolder> {
 
     /**
+     * Constructor
+     */
+
+    public ListAdapter(OnAdapterClickListener callback) {
+        this.delegate = callback;
+    }
+
+    /**
      * create array empty
      */
     private final ArrayList<BestMovieModel> database = new ArrayList<>();
@@ -40,12 +48,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.DataHolder> {
     public void onBindViewHolder(@NonNull DataHolder holder, final int position) {
         holder.DataBind(database.get(position));
         holder.delete.setOnClickListener(view -> {
-            if (delete != null)
-                delete.onClick(view, database.get(position));
+            if (delegate != null)
+                delegate.onDeleteClick(view, database.get(position));
         });
         holder.edit.setOnClickListener(view -> {
-            if (edit != null)
-                edit.onClick(view, database.get(position));
+            if (delegate != null)
+                delegate.onEditClick(view, database.get(position));
+        });
+        holder.itemView.setOnClickListener(view -> {
+            if (delegate != null)
+                delegate.onItemSelectedClick(view, database.get(position));
         });
     }
 
@@ -58,9 +70,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.DataHolder> {
      * Adapter Set
      */
     public void addDataBase(ArrayList<BestMovieModel> list) {
-            database.clear();
-            database.addAll(list);
-            notifyDataSetChanged();
+        database.clear();
+        database.addAll(list);
+        notifyDataSetChanged();
     }
 
     /**
@@ -96,31 +108,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.DataHolder> {
     }
 
     /**
-     * Interface Delete
+     * Interface onItemClick
      */
 
-    private OnDeleteListener delete;
+    private final OnAdapterClickListener delegate;
 
-    public interface OnDeleteListener {
-        void onClick(View view, BestMovieModel bestMovieModel);
+    public interface OnAdapterClickListener {
+        void onDeleteClick(View view, BestMovieModel bestMovieModel);
+
+        void onEditClick(View view, BestMovieModel bestMovieModel);
+
+        void onItemSelectedClick(View view, BestMovieModel bestMovieModel);
     }
 
-    public void setDeleteOnClickListener(OnDeleteListener delete) {
-        this.delete = delete;
-    }
-
-    /**
-     * Interface Edit
-     */
-
-    private OnEditListener edit;
-
-    @SuppressWarnings("EmptyMethod")
-    public interface OnEditListener {
-        void onClick(View view, BestMovieModel bestMovieModel);
-    }
-
-    public void setEditOnClickListener(OnEditListener edit) {
-        this.edit = edit;
-    }
 }

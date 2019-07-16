@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.master.killercode.mcv.R;
 import com.master.killercode.mcv.ui.home.mvcView;
 
-public class Splash extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.splash);
+        setContentView(R.layout.splash_activity);
         Thread timer = new Thread() {
             public void run() {
                 try {
@@ -20,7 +20,7 @@ public class Splash extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    Intent intent = new Intent(Splash.this, mvcView.class);
+                    Intent intent = new Intent(SplashActivity.this, mvcView.class);
                     startActivity(intent);
                 }
             }

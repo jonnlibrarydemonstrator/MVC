@@ -13,7 +13,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".ui.splash.Splash"
+            android:name=".ui.splash.SplashActivity"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.home.mvcView" />
+        <activity
+            android:name=".ui.home.mvcView"
+            android:parentActivityName=".ui.home.mvcView" />
+        <activity android:name=".ui.details.DetailsActivity" />
 
     </application>
 
