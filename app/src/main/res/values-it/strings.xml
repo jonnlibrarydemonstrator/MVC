@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MVC (Model-View-Controller)</string>
+
+    <string name="desc_button_edit">Modifica del film</string>
+    <string name="desc_button_delete">Elimina film</string>
+
+    <string name="label_edit">Modifica %s</string>
+    <string name="label_movie_title">Titolo del film</string>
+    <string name="label_movie_description">Descrizione del film</string>
+    <string name="label_rating_movie">Valutazione del film</string>
+    <string name="label_insert_in_base">Inserisci nel database</string>
+
+    <string name="menu_create_list">Crea lista</string>
+    <string name="menu_clean_database">Cancella il database</string>
+    <string name="menu_reset_app">Reset App</string>
+
+    <string name="msg_error_get_data">Errore durante il recupero dei dati</string>
+    <string name="msg_field_empty">I campi sono vuoti</string>
+    <string name="msg_loading">Caricamento dati…</string>
+    <string name="msg_error_delete">Errore durante l\'eliminazione</string>
+    <string name="msg_error_edit">Errore durante la modifica</string>
+    <string name="msg_error_insert">Errore durante l\'inserimento</string>
+    <string name="msg_database_empty">Database vuoto</string>
+    <string name="msg_error_clean_database">Errore durante la cancellazione del database</string>
+
+--></resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MVC（モデル - ビュー - コントローラ）</string>
+
+    <string name="desc_button_edit">映画の編集</string>
+    <string name="desc_button_delete">映画の削除</string>
+
+    <string name="label_edit">%sを編集</string>
+    <string name="label_movie_title">映画のタイトル</string>
+    <string name="label_movie_description">映画の説明</string>
+    <string name="label_rating_movie">映画の評価</string>
+    <string name="label_insert_in_base">データベースに挿入</string>
+
+    <string name="menu_create_list">リストを作成</string>
+    <string name="menu_clean_database">データベースをクリアする</string>
+    <string name="menu_reset_app">アプリをリセット</string>
+
+    <string name="msg_error_get_data">データ取得エラー</string>
+    <string name="msg_field_empty">フィールドが空です</string>
+    <string name="msg_loading">データのロード…</string>
+    <string name="msg_error_delete">削除エラー</string>
+    <string name="msg_error_edit">編集中のエラー</string>
+    <string name="msg_error_insert">挿入エラー</string>
+    <string name="msg_database_empty">空のデータベース</string>
+    <string name="msg_error_clean_database">データベースの消去中にエラーが発生しました</string>
+
+</resources>

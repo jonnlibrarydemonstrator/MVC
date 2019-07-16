@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MVC (Model-View-Controller)</string>
+
+    <string name="desc_button_edit">Montage de film</string>
+    <string name="desc_button_delete">Film supprimer</string>
+
+    <string name="label_edit">Modifier %s</string>
+    <string name="label_movie_title">Titre du film</string>
+    <string name="label_movie_description">Movie Description</string>
+    <string name="label_rating_movie">Note du film</string>
+    <string name="label_insert_in_base">Insérer dans la base de données</string>
+
+    <string name="menu_create_list">Créer une liste</string>
+    <string name="menu_clean_database">Effacer la base de données</string>
+    <string name="menu_reset_app">Réinitialiser l\'application</string>
+
+    <string name="msg_error_get_data">Erreur lors de la récupération des données</string>
+    <string name="msg_field_empty">Les champs sont vides</string>
+    <string name="msg_loading">Chargement des données…</string>
+    <string name="msg_error_delete">Erreur lors de la suppression</string>
+    <string name="msg_error_edit">Erreur lors de l\'édition</string>
+    <string name="msg_error_insert">Erreur d\'insertion</string>
+    <string name="msg_database_empty">Base de données vide</string>
+    <string name="msg_error_clean_database">Erreur lors de l\'effacement de la base de données</string>
+
+</resources>

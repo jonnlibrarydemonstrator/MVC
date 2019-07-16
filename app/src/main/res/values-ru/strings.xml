@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MVC (Model-View-Controller)</string>
+
+    <string name="desc_button_edit">Редактирование фильма</string>
+    <string name="desc_button_delete">Удаление фильма</string>
+
+    <string name="label_edit">Изменить %s</string>
+    <string name="label_movie_title">Название фильма</string>
+    <string name="label_movie_description">Описание фильма</string>
+    <string name="label_rating_movie">Рейтинг фильма</string>
+    <string name="label_insert_in_base">Вставить в базу данных</string>
+
+    <string name="menu_create_list">Создать список</string>
+    <string name="menu_clean_database">Очистить базу данных</string>
+    <string name="menu_reset_app">Сбросить приложение</string>
+
+    <string name="msg_error_get_data">Ошибка при загрузке данных</string>
+    <string name="msg_field_empty">Поля пусты</string>
+    <string name="msg_loading">Загрузка данных…</string>
+    <string name="msg_error_delete">Ошибка удаления</string>
+    <string name="msg_error_edit">Ошибка при редактировании</string>
+    <string name="msg_error_insert">Ошибка вставки</string>
+    <string name="msg_database_empty">Пустая база данных</string>
+    <string name="msg_error_clean_database">Ошибка при очистке базы данных</string>
+
+</resources>
