@@ -37,7 +37,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //
-    implementation "com.github.quanticheart:database_sqlite:1.0.5"
+    implementation "com.github.quanticheart:database_sqlite:1.0.8"
 
     //
     implementation 'com.jakewharton:butterknife:10.1.0'

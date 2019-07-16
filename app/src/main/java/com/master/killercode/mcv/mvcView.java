@@ -121,9 +121,15 @@ public class mvcView extends AppCompatActivity {
                     hideLoad();
                 }
             });
-            adapter.setEditOnClickListener((view, bestMovieModel) -> {
-
-            });
+            adapter.setEditOnClickListener((view, bestMovieModel) -> new DialogNewMovie(this, bestMovieModel, (id, title, desc, rating) -> {
+                showLoad();
+                if (controller.editMovie(id, title, desc, rating)) {
+                    searchMovies();
+                } else {
+                    MsgUtil.msg(this, "Erro ao editar");
+                    hideLoad();
+                }
+            }));
             showList();
         } else {
             clearLayout();

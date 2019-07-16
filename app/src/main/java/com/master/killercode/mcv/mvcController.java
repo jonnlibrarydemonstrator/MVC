@@ -45,7 +45,7 @@ class mvcController {
      * @param rating      rating movie
      */
     boolean editMovie(String id, String title, String description, Float rating) {
-        BestMovieModel data = new BestMovieModel(title, description, rating);
+        BestMovieModel data = new BestMovieModel(id, title, description, rating);
         return model.editMovieInDB(data);
     }
 

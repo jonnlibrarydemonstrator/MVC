@@ -21,7 +21,7 @@ final class mvcModel {
      * @param context for access database class
      */
     mvcModel(Context context) {
-        dbUtil = new DatabaseMovie(context);
+        dbUtil = new DatabaseMovie(context, true);
     }
 
     /**
