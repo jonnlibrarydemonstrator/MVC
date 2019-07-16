@@ -37,6 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         assert bar != null;
         bar.setTitle(title);
         bar.setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(view -> activity.finish());
     }
 
 }

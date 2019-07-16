@@ -21,10 +21,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.home.mvcView" />
         <activity
-            android:name=".ui.home.mvcView"
-            android:parentActivityName=".ui.home.mvcView" />
-        <activity android:name=".ui.details.DetailsActivity" />
+            android:name=".ui.details.DetailsActivity" />
 
     </application>
 
