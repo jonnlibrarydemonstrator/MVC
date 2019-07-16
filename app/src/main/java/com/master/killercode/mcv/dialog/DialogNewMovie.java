@@ -71,7 +71,12 @@ public class DialogNewMovie {
         etDesc.setText(model.getLitleDescMovie());
         ratingBar.setRating(model.getRattingMovie());
 
-        btnAdd.setText("Editar " + model.getTitleMovie());
+        btnAdd.setText(
+                String.format(
+                activity.getResources().getString(R.string.label_edit),
+                model.getTitleMovie()
+                )
+        );
         btnAdd.setOnClickListener(view -> {
             String title = etTitle.getText().toString().trim();
             String desc = etDesc.getText().toString().trim();
@@ -106,7 +111,7 @@ public class DialogNewMovie {
         if (!title.isEmpty() && !desc.isEmpty()) {
             return true;
         } else {
-            MsgUtil.msg(activity, "Preencha todos os campos");
+            MsgUtil.msg(activity, activity.getString(R.string.msg_field_empty));
             return false;
         }
     }

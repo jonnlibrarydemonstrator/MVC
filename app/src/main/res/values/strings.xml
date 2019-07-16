@@ -2,14 +2,27 @@
 <resources>
 
     <string name="app_name">MVC(Model-View-Controller)</string>
+
     <string name="desc_button_edit">edit move</string>
     <string name="desc_button_delete">delete movie</string>
+
+    <string name="label_edit">Edit %s</string>
     <string name="label_movie_title">Movie Title</string>
     <string name="label_movie_description">Movie Description</string>
     <string name="label_rating_movie">Rating movie</string>
     <string name="label_insert_in_base">Insert in base</string>
+
     <string name="menu_create_list">Create List</string>
     <string name="menu_clean_database">Clean Database</string>
     <string name="menu_reset_app">Reset App</string>
+
+    <string name="msg_error_get_data">Error to get database</string>
+    <string name="msg_field_empty">Fields is empty</string>
+    <string name="msg_loading">Loading data…</string>
+    <string name="msg_error_delete">Error to delete</string>
+    <string name="msg_error_edit">Error to edit</string>
+    <string name="msg_error_insert">Error to insert</string>
+    <string name="msg_database_empty">Empty database</string>
+    <string name="msg_error_clean_database">Error to clean database</string>
 
 </resources>

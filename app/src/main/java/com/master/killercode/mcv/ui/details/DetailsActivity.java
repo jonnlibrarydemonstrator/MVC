@@ -42,7 +42,7 @@ public class DetailsActivity extends BaseActivity {
             desc.setText(extra.getLitleDescMovie());
             ratingBar.setRating(extra.getRattingMovie());
         }else{
-            MsgUtil.msg(this, "Erro ao pegar dados!");
+            MsgUtil.msg(this, getString(R.string.msg_error_get_data));
             finish();
         }
     }

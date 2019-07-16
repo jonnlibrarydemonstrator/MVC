@@ -1,12 +1,11 @@
 package com.master.killercode.mcv.ui.splash;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.master.killercode.mcv.R;
-import com.master.killercode.mcv.ui.home.mvcView;
+import com.master.killercode.mcv.project.ProjectActivity;
 
 public class SplashActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
@@ -20,8 +19,7 @@ public class SplashActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    Intent intent = new Intent(SplashActivity.this, mvcView.class);
-                    startActivity(intent);
+                    ProjectActivity.openHome(SplashActivity.this);
                 }
             }
         };

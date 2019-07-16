@@ -53,7 +53,7 @@ public class mvcView extends BaseActivity {
     private mvcController controller;
 
     /**
-     * LifeCicle create
+     * LifeCycle create
      */
     @Override
     public void onCreate(final Bundle bundle) {
@@ -73,7 +73,7 @@ public class mvcView extends BaseActivity {
     private void initActions() {
         showLoad();
 
-        showMsg("Carregando...");
+        showMsg(getString(R.string.msg_loading));
 
         //Create Recycler
         list.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
@@ -84,7 +84,7 @@ public class mvcView extends BaseActivity {
                 if (controller.deleteMovie(bestMovieModel.getId())) {
                     searchMovies();
                 } else {
-                    MsgUtil.msg(mvcView.this, "Erro ao deletar");
+                    MsgUtil.msg(mvcView.this, getString(R.string.msg_error_delete));
                     hideLoad();
                 }
             }
@@ -96,7 +96,7 @@ public class mvcView extends BaseActivity {
                     if (controller.editMovie(id, title, desc, rating)) {
                         searchMovies();
                     } else {
-                        MsgUtil.msg(mvcView.this, "Erro ao editar");
+                        MsgUtil.msg(mvcView.this, getString(R.string.msg_error_edit));
                         hideLoad();
                     }
                 });
@@ -122,7 +122,7 @@ public class mvcView extends BaseActivity {
             if (controller.addMovie(title, desc, rating)) {
                 searchMovies();
             } else {
-                MsgUtil.msg(this, "Erro ao inserir");
+                MsgUtil.msg(this, getString(R.string.msg_error_insert));
                 hideLoad();
             }
         }));
@@ -183,7 +183,7 @@ public class mvcView extends BaseActivity {
     }
 
     private void clearLayout() {
-        showMsg("Nada Adicionado");
+        showMsg(getString(R.string.msg_database_empty));
     }
 
     @Override
@@ -206,7 +206,7 @@ public class mvcView extends BaseActivity {
                     clearLayout();
                     hideLoad();
                 } else {
-                    MsgUtil.msg(this, "Erro ao limpar base");
+                    MsgUtil.msg(this, getString(R.string.msg_error_clean_database));
                 }
                 break;
             case R.id.resetApp:
