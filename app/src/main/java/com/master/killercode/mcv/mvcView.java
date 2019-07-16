@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,9 +15,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.master.killercode.mcv.adapter.ListAdapter;
+import com.master.killercode.mcv.base.BaseActivity;
 import com.master.killercode.mcv.dialog.DialogNewMovie;
 import com.master.killercode.mcv.util.MsgUtil;
-import com.master.killercode.mcv.util.ToolbarUtil;
 import com.quanticheart.lib.dao.model.BestMovieModel;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 @SuppressLint("Registered")
-public class mvcView extends AppCompatActivity {
+public class mvcView extends BaseActivity {
 
     /**
      * FindViews with ButterKnife
@@ -61,6 +60,8 @@ public class mvcView extends AppCompatActivity {
         ButterKnife.bind(this);
 
         controller = new mvcController(this);
+        createToolbar(this, toolbar);
+
         initActions();
     }
 
@@ -69,7 +70,6 @@ public class mvcView extends AppCompatActivity {
      */
     private void initActions() {
         showLoad();
-        ToolbarUtil.createBackToolbar(this, toolbar);
 
         showMsg("Carregando...");
 
