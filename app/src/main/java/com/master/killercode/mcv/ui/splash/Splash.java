@@ -1,4 +1,4 @@
-package com.master.killercode.mcv.splash;
+package com.master.killercode.mcv.ui.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.master.killercode.mcv.R;
-import com.master.killercode.mcv.mvcView;
+import com.master.killercode.mcv.ui.home.mvcView;
 
 public class Splash extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {

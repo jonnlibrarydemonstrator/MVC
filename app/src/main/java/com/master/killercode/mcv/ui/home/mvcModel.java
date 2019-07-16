@@ -1,4 +1,4 @@
-package com.master.killercode.mcv;
+package com.master.killercode.mcv.ui.home;
 
 import android.content.Context;
 

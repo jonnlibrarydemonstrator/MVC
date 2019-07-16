@@ -1,4 +1,4 @@
-package com.master.killercode.mcv;
+package com.master.killercode.mcv.ui.home;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.master.killercode.mcv.R;
 import com.master.killercode.mcv.adapter.ListAdapter;
 import com.master.killercode.mcv.base.BaseActivity;
 import com.master.killercode.mcv.dialog.DialogNewMovie;

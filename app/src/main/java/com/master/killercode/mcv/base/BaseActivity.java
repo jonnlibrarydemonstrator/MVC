@@ -24,4 +24,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         bar.setTitle(activity.getResources().getString(R.string.app_name));
     }
 
+    /**
+     * create simple toolbar
+     *
+     * @param activity call new toolbar
+     * @param toolbar  layout toolbar
+     */
+    protected void createBackToolbar(Activity activity, Toolbar toolbar) {
+        AppCompatActivity a = (AppCompatActivity) activity;
+        a.setSupportActionBar(toolbar);
+        ActionBar bar = a.getSupportActionBar();
+        assert bar != null;
+        bar.setTitle(activity.getResources().getString(R.string.app_name));
+        bar.setDisplayHomeAsUpEnabled(true);
+    }
+
 }
