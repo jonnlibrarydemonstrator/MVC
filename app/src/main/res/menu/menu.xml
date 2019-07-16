@@ -9,4 +9,8 @@
         android:id="@+id/menuClean"
         android:title="@string/menu_clean_database" />
 
+    <item
+        android:id="@+id/resetApp"
+        android:title="@string/menu_reset_app" />
+
 </menu>

@@ -10,5 +10,6 @@
     <string name="label_insert_in_base">Insert in base</string>
     <string name="menu_create_list">Create List</string>
     <string name="menu_clean_database">Clean Database</string>
+    <string name="menu_reset_app">Reset App</string>
 
 </resources>

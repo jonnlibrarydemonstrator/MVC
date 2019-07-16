@@ -209,6 +209,9 @@ public class mvcView extends BaseActivity {
                     MsgUtil.msg(this, "Erro ao limpar base");
                 }
                 break;
+            case R.id.resetApp:
+                ProjectActivity.openSplash(this);
+                break;
         }
 
         return super.onOptionsItemSelected(item);

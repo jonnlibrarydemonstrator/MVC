@@ -22,6 +22,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActionBar bar = a.getSupportActionBar();
         assert bar != null;
         bar.setTitle(activity.getResources().getString(R.string.app_name));
+        toolbar.setPopupTheme(android.R.style.Theme_Material_Light);
     }
 
     /**
