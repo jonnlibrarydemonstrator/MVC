@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="app_name">MVC (Model-View-Controller)</string>
+    <string name="desc_button_edit">Editar filme</string>
+    <string name="desc_button_delete">Excluir filme</string>
+    <string name="label_edit">Editar %s</string>
+    <string name="label_movie_title">Título do filme</string>
+    <string name="label_movie_description">Descrição do filme</string>
+    <string name="label_rating_movie">Filme de classificação</string>
+    <string name="label_insert_in_base">Inserir na base</string>
+    <string name="menu_create_list">Criar lista</string>
+    <string name="menu_clean_database">Banco de dados limpo</string>
+    <string name="menu_reset_app">Repor App</string>
+    <string name="msg_error_get_data">Erro ao obter o banco de dados</string>
+    <string name="msg_field_empty">Campos está vazio</string>
+    <string name="msg_loading">Carregando dados…</string>
+    <string name="msg_error_delete">Erro para excluir</string>
+    <string name="msg_error_edit">Erro ao editar</string>
+    <string name="msg_error_insert">Erro para inserir</string>
+    <string name="msg_database_empty">Banco de dados vazio</string>
+    <string name="msg_error_clean_database">Erro ao limpar o banco de dados</string>
+
+</resources>
