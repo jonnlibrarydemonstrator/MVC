@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -49,6 +50,9 @@ public class mvcView extends BaseActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @BindView(R.id.flipper)
+    ViewFlipper flipper;
+
     private ListAdapter adapter;
     private mvcController controller;
 
@@ -72,7 +76,6 @@ public class mvcView extends BaseActivity {
      */
     private void initActions() {
         showLoad();
-
         showMsg(getString(R.string.msg_loading));
 
         //Create Recycler
@@ -164,22 +167,15 @@ public class mvcView extends BaseActivity {
             refresh.setRefreshing(false);
     }
 
-    private void showList() {
-        if (list != null)
-            list.setVisibility(View.VISIBLE);
-
-        if (textMsg != null)
-            textMsg.setVisibility(View.GONE);
+    private void showMsg(String msg) {
+        flipper.setDisplayedChild(2);
+        textMsg.setText(msg);
+        btnAdd.hide();
     }
 
-    private void showMsg(String msg) {
-        if (textMsg != null) {
-            textMsg.setText(msg);
-            textMsg.setVisibility(View.VISIBLE);
-        }
-
-        if (list != null)
-            list.setVisibility(View.GONE);
+    private void showList() {
+        flipper.setDisplayedChild(1);
+        btnAdd.hide();
     }
 
     private void clearLayout() {
