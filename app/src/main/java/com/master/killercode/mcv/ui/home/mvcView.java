@@ -2,6 +2,7 @@ package com.master.killercode.mcv.ui.home;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -167,15 +168,20 @@ public class mvcView extends BaseActivity {
             refresh.setRefreshing(false);
     }
 
+    private void showInitLoad() {
+        flipper.setDisplayedChild(0);
+        btnAdd.hide();
+    }
+
     private void showMsg(String msg) {
         flipper.setDisplayedChild(2);
         textMsg.setText(msg);
-        btnAdd.hide();
+        btnAdd.show();
     }
 
     private void showList() {
         flipper.setDisplayedChild(1);
-        btnAdd.hide();
+        btnAdd.show();
     }
 
     private void clearLayout() {
@@ -203,13 +209,29 @@ public class mvcView extends BaseActivity {
                     hideLoad();
                 } else {
                     MsgUtil.msg(this, getString(R.string.msg_error_clean_database));
+                    hideLoad();
                 }
                 break;
             case R.id.resetApp:
-                ProjectActivity.openSplash(this);
+                showInitLoad();
+                resetApp();
                 break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void resetApp() {
+        new CountDownTimer(1000, 1000) {
+
+            @Override
+            public void onTick(long l) {
+            }
+
+            @Override
+            public void onFinish() {
+                ProjectActivity.openSplash(mvcView.this);
+            }
+        }.start();
     }
 }
